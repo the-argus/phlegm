@@ -12,6 +12,7 @@
 
       pythonPackages = with pkgs.python310Packages; [
         tkinter
+        pyls-flake8 flake8
       ];
     in
     rec {
