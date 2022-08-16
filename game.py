@@ -21,6 +21,7 @@ class Game(tk.Frame):
         self.slime_text = self.canvas.create_text(30, 10)
         self.update_slime()
         self.canvas.insert(self.slime_text, 50, "")
+        self.canvas.pack()
 
         GameObject.sort_all()
 
