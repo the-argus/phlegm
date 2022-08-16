@@ -3,21 +3,25 @@ from tkinter import font
 from game import Game
 
 
-def main():
-    # create the window
-    main_window = tk.Tk()
-
-    # customize widget settings before making any
+def style():
     default_family = f'"{font.families()[0]}"'
     def_font = font.nametofont("TkDefaultFont")
     def_font.config(size=19, family=default_family)
 
+
+def create_game():
+    # create the window
+    main_window = tk.Tk()
+    # customize widget settings before making any
+    style()
     # embed the game in the window
     game = Game(main_window)
-
     # open floating window
     main_window.attributes("-type", "dialog")
+    return game
 
+
+def run(game):
     # update loop
     while True:
         try:
@@ -30,4 +34,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    game = create_game()
+    run(game)
