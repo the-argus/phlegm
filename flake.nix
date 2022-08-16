@@ -12,7 +12,7 @@
 
       pythonPackages = with pkgs.python310Packages; [
         tkinter
-        pyls-flake8 flake8
+        pyls-flake8 flake8 black python-lsp-black
       ];
     in
     rec {

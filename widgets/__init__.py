@@ -1,5 +1,3 @@
 from .CooldownButton import CooldownButton
 
-__all__ = [
-    "CooldownButton"
-]
+__all__ = ["CooldownButton"]

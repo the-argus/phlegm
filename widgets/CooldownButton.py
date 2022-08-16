@@ -4,11 +4,12 @@ from ecs import GameObject
 
 class CooldownButton(ttk.Button, GameObject):
     """A version of button which comes paired with a progressbar."""
+
     def __init__(self, parent, cooldown, **kwargs):
         """
-            parent: Tk root
-            cooldown: integer, how long progressbar takes before allowing
-                another press
+        parent: Tk root
+        cooldown: integer, how long progressbar takes before allowing
+            another press
         """
         # remove keyword arguments that relate to cooldown functionality
         self.command = kwargs.pop("command")

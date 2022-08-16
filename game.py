@@ -7,21 +7,13 @@ class Game(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
 
-        self.canvas = tk.Canvas(master,
-                                width=100,
-                                height=100)
+        self.canvas = tk.Canvas(master, width=100, height=100)
         self.slime = 1
         self.slime_button = CooldownButton(
-                master,
-                text="collect slime",
-                width=50,
-                command=self.get_slime,
-                cooldown=10)
+            master, text="collect slime", width=50, command=self.get_slime, cooldown=10
+        )
 
-        self.kill = tk.Button(master,
-                              text='kill...',
-                              width=100,
-                              command=master.destroy)
+        self.kill = tk.Button(master, text="kill...", width=100, command=master.destroy)
 
         # pack buttons
         self.kill.pack(padx=5, pady=5)

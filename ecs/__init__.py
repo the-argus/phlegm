@@ -1,5 +1,3 @@
 from .GameObject import GameObject
 
-__all__ = [
-    "GameObject"
-]
+__all__ = ["GameObject"]

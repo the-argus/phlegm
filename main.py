@@ -8,7 +8,7 @@ def main():
     main_window = tk.Tk()
 
     # customize widget settings before making any
-    default_family = f"\"{font.families()[0]}\""
+    default_family = f'"{font.families()[0]}"'
     def_font = font.nametofont("TkDefaultFont")
     def_font.config(size=19, family=default_family)
 
@@ -16,7 +16,7 @@ def main():
     game = Game(main_window)
 
     # open floating window
-    main_window.attributes('-type', 'dialog')
+    main_window.attributes("-type", "dialog")
 
     # update loop
     while True:
