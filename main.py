@@ -1,3 +1,4 @@
+import time
 import tkinter as tk
 from tkinter import font
 from game import Game
@@ -24,6 +25,9 @@ def create_game():
 def run(game):
     # update loop
     while True:
+        # ROUGHLY 60fps (calculations could take longer, but
+        # we dont really need lag compensation
+        time.sleep(1/60)
         try:
             game.update_idletasks()
             game.update()

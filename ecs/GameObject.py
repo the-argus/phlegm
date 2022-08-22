@@ -3,6 +3,7 @@ class GameObject:
 
     # lists for each component/tag
     updaters = []
+    drawers = []
 
     @classmethod
     def sort_all(cls):
@@ -19,8 +20,12 @@ class GameObject:
         """Move a tagged object into the list with objects of its type"""
         if "update" in self.tags:
             GameObject.updaters.append(self)
+        if "draw" in self.tags:
+            GameObject.drawers.append(self)
 
     def kill(self):
         """Remove this object from all the lists."""
         if "update" in self.tags:
             GameObject.updaters.remove(self)
+        if "draw" in self.tags:
+            GameObject.drawers.remove(self)

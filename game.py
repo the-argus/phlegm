@@ -10,17 +10,27 @@ class Game(tk.Frame):
         self.canvas = tk.Canvas(master, width=100, height=100)
         self.slime = 1
         self.slime_button = CooldownButton(
-            master, text="collect slime", width=50, command=self.get_slime, cooldown=10
+            master,
+            canvas=self.canvas,
+            text="collect slime",
+            width=50,
+            command=self.get_slime,
+            cooldown=10,
         )
 
         self.kill = tk.Button(master, text="kill...", width=100, command=master.destroy)
 
         # pack buttons
-        self.kill.pack(padx=5, pady=5)
-        self.slime_button.pack(padx=5, pady=5)
+        # self.kill.pack(padx=5, pady=5)
+        # self.slime_button.pack(padx=5, pady=5)
         self.slime_text = self.canvas.create_text(30, 10)
         self.update_slime()
         self.canvas.insert(self.slime_text, 50, "")
+        # create windows for the buttons
+        self.canvas.create_window(
+            10, 10, anchor=tk.NW, window=self.slime_button, width=50
+        )
+        self.canvas.create_window(10, 30, anchor=tk.NW, window=self.kill, width=100)
         self.canvas.pack()
 
         GameObject.sort_all()
@@ -36,3 +46,9 @@ class Game(tk.Frame):
         super().update()
         for object in GameObject.updaters:
             object.update()
+
+        self.draw()
+
+    def draw(self):
+        for object in GameObject.drawers:
+            object.draw(self.canvas)

@@ -5,7 +5,7 @@ from ecs import GameObject
 class CooldownButton(ttk.Button, GameObject):
     """A version of button which comes paired with a progressbar."""
 
-    def __init__(self, parent, cooldown, **kwargs):
+    def __init__(self, parent, cooldown, canvas, **kwargs):
         """
         parent: Tk root
         cooldown: integer, how long progressbar takes before allowing
@@ -27,6 +27,13 @@ class CooldownButton(ttk.Button, GameObject):
 
         # initialize component(s)
         self.tags["update"] = self.update
+        self.tags["draw"] = self.draw
+
+        self.cooldown_rect = canvas.create_rectangle(
+            10, 0, 10 + 50, 10, fill="blue", outline=""
+        )
+
+        self.canvas = canvas
 
     def press(self):
         """Callback when button is pressed."""
@@ -39,3 +46,7 @@ class CooldownButton(ttk.Button, GameObject):
         """Callback every frame."""
         if self._timer > 0:
             self._timer -= 1
+
+    def draw(self, canvas):
+        """Draw the progress bar proportional to self each frame"""
+        pass
